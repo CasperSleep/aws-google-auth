@@ -36,6 +36,7 @@ class Configuration(object):
         self.username = None
         self.print_creds = False
         self.quiet = False
+        self.bg_response = None
 
     # For the "~/.aws/config" file, we use the format "[profile testing]"
     # for the 'testing' profile. The credential file will just be "[testing]"
@@ -163,6 +164,7 @@ class Configuration(object):
         config_parser.set(profile, 'google_config.google_sp_id', self.sp_id)
         config_parser.set(profile, 'google_config.u2f_disabled', self.u2f_disabled)
         config_parser.set(profile, 'google_config.google_username', self.username)
+        config_parser.set(profile, 'google_config.bg_response', self.bg_response)
         with open(self.config_file, 'w+') as f:
             config_parser.write(f)
 
@@ -238,6 +240,10 @@ class Configuration(object):
             # Username
             read_username = unicode_to_string(config_parser[profile_string].get('google_config.google_username', None))
             self.username = coalesce(read_username, self.username)
+
+            # bg_response
+            read_bg_response = unicode_to_string(config_parser[profile_string].get('google_config.bg_response', None))
+            self.bg_response = coalesce(read_bg_response, self.bg_response)
 
         # SAML Cache
         try:
