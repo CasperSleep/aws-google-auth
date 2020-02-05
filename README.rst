@@ -138,6 +138,8 @@ Usage
                             falls back to 'sts')
       -D, --disable-u2f     Disable U2F functionality.
       -q, --quiet           Quiet output
+      --bg-response BG_RESPONSE
+                            Override default bgresponse challenge token ($GOOGLE_BG_RESPONSE).
       --no-cache            Do not cache the SAML Assertion.
       --print-creds         Print Credentials.
       --resolve-aliases     Resolve AWS account aliases.
@@ -145,7 +147,7 @@ Usage
                             troubleshooting.
       -a, --ask-role        Set true to always pick the role
       -r ROLE_ARN, --role-arn ROLE_ARN
-                            The ARN of the role to assume
+                            The ARN of the role to assume ($AWS_ROLE_ARN)
       -k, --keyring         Use keyring for storing the password.
       -V, --version         show program's version number and exit
 
